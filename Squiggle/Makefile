@@ -1,12 +1,15 @@
 NAME := Squiggle
-ALL := $(NAME).dxf $(NAME).svg
+ALL := $(NAME).dxf $(NAME).svg $(NAME).png
 
 .PHONY : all clean
 
 all: $(ALL)
 
-$(ALL): $(NAME).scad
+$(NAME).dxf $(NAME).svg: $(NAME).scad
 	openscad -o $@ $<
+
+$(NAME).png: $(NAME).svg
+	convert $< $@
 
 clean:
 	rm -f $(ALL)
