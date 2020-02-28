@@ -5,25 +5,25 @@ use <../_openscad-common/RoundedRect.scad>
 
 FONT = "Liberation mono";
 
-module AmyLikesBooks()
+module AmyLikesBooks(size)
 {
     difference()
     {
-        RoundedRect2D(BOOKMARK_SIZE_NORMAL, 10);
+        RoundedRect2D(size, 10);
 
         translate([
-            BOOKMARK_SIZE_NORMAL[0] * 0.333,
-            (BOOKMARK_SIZE_NORMAL[1] + 10) * 0.75])
+            size[0] * 0.333,
+            (size[1] + 10) * 0.75])
         VerticalText("AMY",
-            height=BOOKMARK_SIZE_NORMAL[1] * 0.5 / 3,
+            height=size[1] * 0.5 / 3,
             spacing=10,
             font=FONT);
 
-        translate([BOOKMARK_SIZE_NORMAL[0] * 0.75, BOOKMARK_SIZE_NORMAL[1] * 0.5])
+        translate([size[0] * 0.75, size[1] * 0.5])
         rotate([0, 0, 90])
-        resize([0, BOOKMARK_SIZE_NORMAL[0] * 0.25], auto = true)
+        resize([0, size[0] * 0.25], auto = true)
         text("-likes books-", font=FONT, halign = "center", valign = "center");
     }
 }
 
-AmyLikesBooks();
+AmyLikesBooks(BOOKMARK_SIZE_NORMAL);
