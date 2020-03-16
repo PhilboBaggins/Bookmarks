@@ -26,4 +26,6 @@ module AmyLikesBooks(size)
     }
 }
 
-AmyLikesBooks(BOOKMARK_SIZE_NORMAL);
+// Leave space around design to draw cut lines (in a different colour, using a separate script)
+translate([1, 1])
+AmyLikesBooks(BOOKMARK_SIZE_NORMAL - [2, 2]);
